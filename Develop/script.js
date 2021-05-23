@@ -6,6 +6,7 @@ var numCodes = arrayForUpperLower(48, 57)
 var symbolCodes = arrayForUpperLower(33, 47).concat(arrayForUpperLower(58, 64)).concat(arrayForUpperLower(91, 96)
 ).concat(arrayForUpperLower(123, 126));
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -21,8 +22,16 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   let charCodes = lowercaseCodes;
-var length = prompt("how long do you want your password? (Between 8 and 128 characters)")
-  if(window.confirm("do you want uppercase letters?")) {
+var long = prompt("how long do you want your password? (Between 8 and 128 characters)");
+if( long > 8 && long < 128) {
+  var length = long;
+  
+} 
+else {
+  alert("Please use between 8 and 128 characters");
+  location.replace();
+}
+if(window.confirm("do you want uppercase letters?")) {
   charCodes = charCodes.concat (uppercaseCodes);
 }
 else {
