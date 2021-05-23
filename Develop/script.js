@@ -1,34 +1,42 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var length = 8;
+var uppercaseCodes = arrayForUpperLower(65, 90);
+var lowercaseCodes = arrayForUpperLower(97, 122);
+var numCodes = arrayForUpperLower(48, 57)
+var symbolCodes = arrayForUpperLower(33, 47).concat(arrayForUpperLower(58, 64)).concat(arrayForUpperLower(91, 96)
+).concat(arrayForUpperLower(123, 126));
+
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(length, 8, 128);
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  var long = prompt("How long is your password?")
-  length = long;
-  if (length > 8, length < 128) {
-    length = long;
-  console.log(length);
+  
+
   passwordText.value = password;
 
-}
-else {
-  window.alert("put between 8 and 128 characters")
-}
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
-  
-  charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-  retVal = "";
-for (var i = 0, n = charset.length; i < length; ++i) {
-  retVal += charset.charAt(Math.floor(Math.random() * n));
+  let charCodes = lowercaseCodes;
+if(window.confirm("do you want uppercase letters?")) {
+  charCodes = charCodes.concat (uppercaseCodes);
 }
-return retVal;
+if(window.confirm("do you want numbers?")) {
+  charCodes = charCodes.concat (numCodes);
+}
+var symbolPrompt = window.confirm("do you want symbols?");
 
- 
+  
+
+}
+
+function arrayForUpperLower(low, high) {
+  const array= []
+  for (let i = low; i <= high; i++) {
+    array.push(i)
+  }
+  return array
 }
