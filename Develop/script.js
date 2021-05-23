@@ -21,15 +21,33 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   let charCodes = lowercaseCodes;
-if(window.confirm("do you want uppercase letters?")) {
+var length = prompt("how long do you want your password? (Between 8 and 128 characters)")
+  if(window.confirm("do you want uppercase letters?")) {
   charCodes = charCodes.concat (uppercaseCodes);
+}
+else {
+  console.log("no")
 }
 if(window.confirm("do you want numbers?")) {
   charCodes = charCodes.concat (numCodes);
 }
-var symbolPrompt = window.confirm("do you want symbols?");
-
+else {
+  console.log("no")
+}
+if(window.confirm("do you want symbols?")) {
+  charCodes = charCodes.concat (symbolCodes);
+}
+else {
+  console.log("no")
+}
+var passwordChar = []
+for (let i = 0; i < length; i++) {
+  var character = charCodes[Math.floor(Math.random() * length)]
+  passwordChar.push(String.fromCharCode(character))
   
+}
+
+  return passwordChar.join('')
 
 }
 
